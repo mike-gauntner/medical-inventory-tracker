@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#2563eb">
+    <meta name="color-scheme" content="light dark">
+    <title>Medical Inventory Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- TODO: Add favicon for better branding -->
+</head>
+
+<body>
+    <div class="badge">Coming Soon: Real-time Alerts</div>
+    <h1>Medical Inventory Tracker</h1>
+    <p class="app-summary">
+        Track and manage your medical supplies with ease. Monitor stock levels,
+        expiration dates, and generate reports.
+    </p>
+    <div id="message" class="message"></div>
+
+    <!-- Add/Edit Form -->
+    <form id="inventoryForm">
+        <input type="hidden" id="itemId">
+        <label for="name">Name:</label>
+        <input type="text" id="name" required>
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" min="0" required>
+        <label for="expiration">Expiration Date:</label>
+        <input type="date" id="expiration" required>
+        <button type="submit" id="submitBtn">Add Item</button>
+        <button type="button" id="cancelBtn" style="display: none;">Cancel</button>
+    </form>
+
+    <!-- Search, Filter, and Export Controls -->
+    <div id="controls">
+        <input type="text" id="searchInput" placeholder="Search by name...">
+        <div id="filterButtons">
+            <button class="filter-btn active" data-filter="all">All Items</button>
+            <button class="filter-btn" data-filter="low-stock">Low Stock</button>
+            <button class="filter-btn" data-filter="normal">Normal Stock</button>
+            <button class="filter-btn" id="exportBtn" title="Export to CSV">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                <span>Export CSV</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Inventory Table -->
+    <table id="inventoryTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th class="sortable" data-sort="name">Name</th>
+                <th class="sortable" data-sort="quantity">Quantity</th>
+                <th class="sortable" data-sort="expiration">Expiration Date</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="inventoryBody"></tbody>
+    </table>
+
+    <script src="theme.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
